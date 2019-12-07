@@ -1,24 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+import Container from "react-bootstrap/Container";
+
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MyAccount from "./components/MyAccount";
+import FundTransfer from "./components/FundTransfer/FundTransfer";
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App w-100">
+      <Header />
+      <Container fluid className="App">
+        <Router>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route exact path="/" component={MyAccount} />
+              <Route exact path="/summary" component={MyAccount} />
+              <Route path="/transfer" component={FundTransfer} />
+            </Switch>
+          </Suspense>
+        </Router>
+      </Container>
+      <Footer />
     </div>
   );
 }

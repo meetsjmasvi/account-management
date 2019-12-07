@@ -1,6 +1,4 @@
-.App {
-  text-align: center;
-}
+.App { }
 
 .App-logo {
   height: 40vmin;
@@ -19,4 +17,12 @@
 
 .App-link {
   color: #09d3ac;
+}
+
+
+/* STYLE FOR FUND TRANSFER PAGE */
+.available-balance {
+  font-size: 12px;
+  font-weight: 400;
+  color: #213b83;
 }
