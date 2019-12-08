@@ -5,13 +5,16 @@ import { Messages, getMessage } from '../../messages';
 import { deepCopy } from '../../services/utils';
 import defaultState from './defaultState';
 
+import { Row, Col } from 'react-bootstrap';
+import CustomModal from '../CustomModal';
+
 class FundTransfer extends Component {
 
   constructor(props) {
     super(props);
 
+    this.refModal = React.createRef();
     this.state = deepCopy(defaultState);
-
     this._accountService = new AccountService();
 
     this._accountService.whenReady().then(() => {
@@ -31,7 +34,6 @@ class FundTransfer extends Component {
   componentDidMount() {
 
   }
-
 
   getAccountOptions(accToSkip) {
     let optionObj = [
@@ -70,6 +72,10 @@ class FundTransfer extends Component {
     this.setState({ data: newState });
   }
 
+  handleModalClose() {
+    this.setState({ showModal: false });
+  }
+
 
   handleSubmit = event => {
     event.preventDefault();
@@ -85,7 +91,7 @@ class FundTransfer extends Component {
       let savedStatus = this._accountService.handleFundTransfer(Object.assign({}, formValues));
 
       savedStatus.then(() => {
-        let currentState = deepCopy(defaultState, { readyState: true });
+        let currentState = deepCopy(defaultState, { readyState: true, showModal: true });
         this.setState(currentState);
       });
     } else {
@@ -167,39 +173,40 @@ class FundTransfer extends Component {
         <div className="my-account mt-5 mb-5 pb-5">
           <h1 className="text-left pb-3">Fund Transfer</h1>
           <form onSubmit={this.handleSubmit}>
-            <div className="row">
-              <div className="form-group col" md="4">
+            <Row>
+              <Col className="form-group" xs={12} md={4}>
                 <label htmlFor="sourceAccount">From Account <span className="available-balance">{`Bal: ${data.sourceAccountBalance}`}</span></label>
                 <select name="sourceAccount" className={`form-control ${formErrors.sourceAccount ? 'is-invalid' : ''}`} placeholder="From Account" value={formValues.sourceAccount} onChange={this.handleChange}>
                   {this.getAccountOptions()}
                 </select>
                 <div className={`invalid-feedback ${formValidity.sourceAccount ? 'd-sm-block' : ''}`}>{formErrors.sourceAccount}</div>
-              </div>
-              <div className="form-group col" md="4">
+              </Col>
+              <Col className="form-group" xs={12} md={4}>
                 <label for="targetAccount">To Account</label>
                 <select name="targetAccount" className={`form-control ${formErrors.targetAccount ? 'is-invalid' : ''}`} placeholder="To Account" value={formValues.targetAccount} onChange={this.handleChange}>
                   {this.getAccountOptions(data.sourceAccount)}
                 </select>
                 <div className={`invalid-feedback ${formValidity.targetAccount ? 'd-sm-block' : ''}`}>{formErrors.targetAccount}</div>
-              </div>
-              <div className="form-group col" md="4">
+              </Col>
+              <Col className="form-group" xs={12} md={4}>
                 <label for="avlBalance">Transfer Amount</label>
                 <input type="text" name="transferAmount" className={`form-control ${formErrors.transferAmount ? 'is-invalid' : ''}`} placeholder="Transfer Amount" value={formValues.transferAmount} onChange={this.handleChange} />
                 <div className={`invalid-feedback ${formValidity.transferAmount ? 'd-sm-block' : ''}`}>{formErrors.trasferAmount}</div>
-              </div>
-            </div>
-            <div className="row">
-              <div className="form-group col-12 col-md-4">
+              </Col>
+            </Row>
+            <Row>
+              <Col className="form-group" xs={12}>
                 <label for="avlBalance">Description</label>
                 <input type="text" name="description" maxLength="100" className="form-control" placeholder="Description" value={formValues.description} onChange={this.handleChange} />
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-4 offset-4">
+              </Col>
+            </Row>
+            <Row className="row">
+              <Col className="form-group" xs={12}>
                 <button className="btn btn-primary btn-block" type="submit" disabled={isSubmitting}>Transfer</button>
-              </div>
-            </div>
+              </Col>
+            </Row>
           </form>
+          <CustomModal ref={this.refModal} show={this.state.showModal} message="Amount transferred succesfully" title="Information" onHide={this.handleModalClose.bind(this)} />
         </div>
       );
     } else {

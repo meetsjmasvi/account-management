@@ -13,9 +13,9 @@ class Footer extends Component {
 
   render() {
     return (
-      <Container fluid fixed="bottom" className="footer" >
-        <p className="text-right">Copyright 2019, {this.state.appName}</p>
-      </Container>
+      <div fixed="bottom" className="footer w-100" >
+        <p className="text-right pr-4">Copyright 2019, {this.state.appName}</p>
+      </div>
     );
   }
 

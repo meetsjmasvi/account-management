@@ -18,26 +18,27 @@ class MyAccount extends Component {
     this.state = {
       title: "My Account",
       accountNo: [],
-      selectedAccount: 0
+      selectedAccountID: 0
     };
 
     this.onAccountChange = this.onAccountChange.bind(this);
   };
 
   componentDidMount() {
-    fetch(`${Config.apiEndPoint}/accounts`)
-      .then(res => res.json())
-      .then(res => {
-        let accountNumbers = res.map(item => item.accno);
-        let currentAccount = accountNumbers.length > 0 ? accountNumbers[0] : '';
-        this.setState({
-          accountNo: accountNumbers,
-          selectedAccount: currentAccount
-        });
-      });
+    let accountNumbers = this.props.accountService.accountNo;
+    let currentAccount = accountNumbers.length > 0 ? accountNumbers[0] : '';
+
+    this.setState({
+      accountNo: accountNumbers,
+      selectedAccountID: currentAccount
+    });
   }
 
   getAccountNumber() {
+    if (!this.state.accountNo.length) {
+      return <option value="select">Select Account</option>;
+    }
+
     return this.state.accountNo.map((item, index) => {
       return <option key={index + 1} value={item}>{item}</option>
     });
@@ -46,7 +47,7 @@ class MyAccount extends Component {
   // Events
   onAccountChange(evt) {
     this.setState({
-      selectedAccount: evt.target.value
+      selectedAccountID: evt.target.value
     });
   }
 
@@ -66,9 +67,9 @@ class MyAccount extends Component {
             </Form.Row>
           </Form>
         </Jumbotron>
-        <AccountSummary accountId={this.state.selectedAccount} />
+        <AccountSummary accountId={this.state.selectedAccountID} accountService={this.props.accountService} />
         <div className="trans-history">
-          <HistoryTable accountId={this.state.selectedAccount} />
+          <HistoryTable accountId={this.state.selectedAccountID} accountService={this.props.accountService} />
         </div>
       </div>
     );

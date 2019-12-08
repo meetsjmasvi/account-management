@@ -21,5 +21,6 @@ export default {
     "targetAccount": false,
     "transferAmount": false
   },
-  "readyState": false
+  "readyState": false,
+  "showModal": false
 }

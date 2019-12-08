@@ -14,24 +14,26 @@ class AccountSummary extends Component {
   };
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    if (this.props.accountId !== prevProps.accountId) {
-      let apiEndPoint = `${Config.apiEndPoint}/accounts?accno=${this.props.accountId}`;
-      fetch(apiEndPoint)
-        .then(res => res.json())
+    if (!!this.props.accountId && this.props.accountId !== prevProps.accountId) {
+      this.props.accountService.fetchAccountByID(this.props.accountId)
         .then(res => {
-          let accDetails = res[0];
-          this.setState({
-            bankName: accDetails.bank,
-            accType: accDetails.actype,
-            currency: accDetails.currency,
-            avlBalance: accDetails.balance
-          });
+          if (!!res.data) {
+            let accDetails = res.data[0];
+            this.setState({
+              bankName: accDetails.bank,
+              accType: accDetails.actype,
+              currency: accDetails.currency,
+              avlBalance: accDetails.balance
+            });
+          }
         });
     }
   }
 
   getAvlBalance() {
-    return `Total Balance: ${this.state.currency} ${this.state.avlBalance}`;
+    return (
+      `Total Balance: ${this.state.currency} ${this.state.avlBalance}`
+    )
   }
 
   getAccName() {
@@ -41,9 +43,9 @@ class AccountSummary extends Component {
   render() {
     return (
       <div className="mb-3">
-        <div className="d-flex justify-content-between font-weight-bold">
-          <div className="p-2 flex-fill bd-highlight text-left">{this.getAccName()}</div>
-          <div className="p-2 flex-fill bd-highlight text-right">{this.getAvlBalance()}</div>
+        <div className="d-flex justify-content-between font-weight-bold row">
+          <div className="p-2 flex-fill bd-highlight text-left col-6">{this.getAccName()}</div>
+          <div className="p-2 flex-fill bd-highlight text-right col-6">{this.getAvlBalance()}</div>
         </div>
       </div>
     );

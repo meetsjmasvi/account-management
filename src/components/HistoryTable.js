@@ -15,18 +15,19 @@ class HistoryTable extends Component {
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (this.props.accountId !== prevProps.accountId) {
-      let apiEndPoint = `http://localhost:3001/transactions?accno=${this.props.accountId}&_sort=timestamp&_order=desc`;
-      fetch(apiEndPoint)
-        .then(res => res.json())
+      this.props.accountService.fetchTransactionDetails(this.props.accountId)
         .then(res => {
           this.setState({
-            data: res
+            data: res.data
           });
         });
+
     }
   }
 
   getHistoryRow() {
+    if (!this.state.data || !this.state.data.length) return null;
+
     return this.state.data.map((item, index) => {
       return <tr key={index}>
         <td><Moment parse="YYYY-MM-DD HH:mm:ss" format="DD/MM/YYYY">>{item.timestamp}</Moment></td>

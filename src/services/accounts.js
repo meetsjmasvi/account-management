@@ -46,13 +46,27 @@ AccountService.prototype.getID = function (accNo) {
 };
 
 
+AccountService.prototype.fetchAccountByID = function (accountId) {
+  return axios.get(`${Config.apiEndPoint}/accounts?accno=${accountId}`);
+};
+
+
 AccountService.prototype.updateAccount = function (args) {
   let id = this.getID(args.accno);
 
   return axios.put(`${Config.apiEndPoint}/accounts/${id}`, args);
 };
 
+AccountService.prototype.fetchAccountDetails = function () {
+  let { accountNo } = this.accountNo;
+  return {
+    accountNo
+  };
+}
 
+AccountService.prototype.fetchTransactionDetails = function (accountId) {
+  return axios.get(`${Config.apiEndPoint}/transactions?accno=${accountId}&_sort=timestamp&_order=desc`)
+}
 
 AccountService.prototype.updateTransaction = function (args) {
   let { sourceAccount, targetAccount, transferAmount, description } = args;

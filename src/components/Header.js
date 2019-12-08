@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav } from 'react-bootstrap';
+import Logo from './logo';
 
 class Header extends Component {
 
@@ -13,14 +14,13 @@ class Header extends Component {
 
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">
-          <img alt="" src="/logo.svg" width="30" height="30" className="d-inline-block align-top"
-          />{this.state.appName}
+      <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar.Brand href="#home" className="site-logo">
+          <Logo className="d-inline-block align-top" />&nbsp;
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
-          <Nav>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
+          <Nav className="mr-sm-2">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/summary">My Account</Nav.Link>
             <Nav.Link href="/transfer">Fund Transfer</Nav.Link>
