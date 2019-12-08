@@ -5,7 +5,7 @@
 }
 
 .app-container {
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 
 /* HEADER STYLES */
@@ -44,7 +44,7 @@
 
 .home-container {
   display: flex;
-  height: calc(100vh - 50px);
+  height: calc(100vh - 100px);
   justify-content: flex-start;
   align-items: center;
   padding-left: 30px;
@@ -65,6 +65,15 @@
 }
 
 
+/* STYLES FOR MY ACCOUNT PAGE */
+.trans-history {
+  width: 100%;
+  overflow: auto;
+  min-height: 200px;
+  max-height: 328px;
+}
+
+
 /* STYLE FOR FUND TRANSFER PAGE */
 .available-balance {
   font-size: 12px;
@@ -72,9 +81,6 @@
   color: #213b83;
 }
 
-
-
-/* TRANSFER PAGE STYLES */
 .btn-block {
   width: 120px;  
 }

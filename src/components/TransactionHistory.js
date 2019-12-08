@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Table from "react-bootstrap/Table";
 import Moment from 'react-moment';
 
-class HistoryTable extends Component {
+class TransactionHistory extends Component {
 
   constructor(props) {
     super(props);
@@ -60,4 +60,4 @@ class HistoryTable extends Component {
 
 }
 
-export default HistoryTable;
+export default TransactionHistory;

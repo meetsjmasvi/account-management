@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 
-function CustomModal(props) {
+function CustomDialog(props) {
   const [show, setShow] = useState(false);
   const handleShow = () => setShow(true);
 
@@ -27,5 +27,5 @@ function CustomModal(props) {
 }
 
 
-export default CustomModal;
+export default CustomDialog;
 

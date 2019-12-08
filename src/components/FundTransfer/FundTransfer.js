@@ -5,8 +5,8 @@ import { Messages, getMessage } from '../../messages';
 import { deepCopy } from '../../services/utils';
 import defaultState from './defaultState';
 
-import { Row, Col } from 'react-bootstrap';
-import CustomModal from '../CustomModal';
+import { Row, Col, Container } from 'react-bootstrap';
+import CustomDialog from '../CustomDialog';
 
 class FundTransfer extends Component {
 
@@ -170,44 +170,46 @@ class FundTransfer extends Component {
 
     if (this.state.readyState) {
       return (
-        <div className="my-account mt-5 mb-5 pb-5">
-          <h1 className="text-left pb-3">Fund Transfer</h1>
-          <form onSubmit={this.handleSubmit}>
-            <Row>
-              <Col className="form-group" xs={12} md={4}>
-                <label htmlFor="sourceAccount">From Account <span className="available-balance">{`Bal: ${data.sourceAccountBalance}`}</span></label>
-                <select name="sourceAccount" className={`form-control ${formErrors.sourceAccount ? 'is-invalid' : ''}`} placeholder="From Account" value={formValues.sourceAccount} onChange={this.handleChange}>
-                  {this.getAccountOptions()}
-                </select>
-                <div className={`invalid-feedback ${formValidity.sourceAccount ? 'd-sm-block' : ''}`}>{formErrors.sourceAccount}</div>
-              </Col>
-              <Col className="form-group" xs={12} md={4}>
-                <label for="targetAccount">To Account</label>
-                <select name="targetAccount" className={`form-control ${formErrors.targetAccount ? 'is-invalid' : ''}`} placeholder="To Account" value={formValues.targetAccount} onChange={this.handleChange}>
-                  {this.getAccountOptions(data.sourceAccount)}
-                </select>
-                <div className={`invalid-feedback ${formValidity.targetAccount ? 'd-sm-block' : ''}`}>{formErrors.targetAccount}</div>
-              </Col>
-              <Col className="form-group" xs={12} md={4}>
-                <label for="avlBalance">Transfer Amount</label>
-                <input type="text" name="transferAmount" className={`form-control ${formErrors.transferAmount ? 'is-invalid' : ''}`} placeholder="Transfer Amount" value={formValues.transferAmount} onChange={this.handleChange} />
-                <div className={`invalid-feedback ${formValidity.transferAmount ? 'd-sm-block' : ''}`}>{formErrors.trasferAmount}</div>
-              </Col>
-            </Row>
-            <Row>
-              <Col className="form-group" xs={12}>
-                <label for="avlBalance">Description</label>
-                <input type="text" name="description" maxLength="100" className="form-control" placeholder="Description" value={formValues.description} onChange={this.handleChange} />
-              </Col>
-            </Row>
-            <Row className="row">
-              <Col className="form-group" xs={12}>
-                <button className="btn btn-primary btn-block" type="submit" disabled={isSubmitting}>Transfer</button>
-              </Col>
-            </Row>
-          </form>
-          <CustomModal ref={this.refModal} show={this.state.showModal} message="Amount transferred succesfully" title="Information" onHide={this.handleModalClose.bind(this)} />
-        </div>
+        <Container fluid className="app-container">
+          <div className="my-account mt-5 mb-5 pb-5">
+            <h1 className="text-left pb-3">Fund Transfer</h1>
+            <form onSubmit={this.handleSubmit}>
+              <Row>
+                <Col className="form-group" xs={12} md={4}>
+                  <label htmlFor="sourceAccount">From Account <span className="available-balance">{`Bal: ${data.sourceAccountBalance}`}</span></label>
+                  <select name="sourceAccount" className={`form-control ${formErrors.sourceAccount ? 'is-invalid' : ''}`} placeholder="From Account" value={formValues.sourceAccount} onChange={this.handleChange}>
+                    {this.getAccountOptions()}
+                  </select>
+                  <div className={`invalid-feedback ${formValidity.sourceAccount ? 'd-sm-block' : ''}`}>{formErrors.sourceAccount}</div>
+                </Col>
+                <Col className="form-group" xs={12} md={4}>
+                  <label for="targetAccount">To Account</label>
+                  <select name="targetAccount" className={`form-control ${formErrors.targetAccount ? 'is-invalid' : ''}`} placeholder="To Account" value={formValues.targetAccount} onChange={this.handleChange}>
+                    {this.getAccountOptions(data.sourceAccount)}
+                  </select>
+                  <div className={`invalid-feedback ${formValidity.targetAccount ? 'd-sm-block' : ''}`}>{formErrors.targetAccount}</div>
+                </Col>
+                <Col className="form-group" xs={12} md={4}>
+                  <label for="avlBalance">Transfer Amount</label>
+                  <input type="text" name="transferAmount" className={`form-control ${formErrors.transferAmount ? 'is-invalid' : ''}`} placeholder="Transfer Amount" value={formValues.transferAmount} onChange={this.handleChange} />
+                  <div className={`invalid-feedback ${formValidity.transferAmount ? 'd-sm-block' : ''}`}>{formErrors.trasferAmount}</div>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="form-group" xs={12}>
+                  <label for="avlBalance">Description</label>
+                  <input type="text" name="description" maxLength="100" className="form-control" placeholder="Description" value={formValues.description} onChange={this.handleChange} />
+                </Col>
+              </Row>
+              <Row className="row">
+                <Col className="form-group" xs={12}>
+                  <button className="btn btn-primary btn-block" type="submit" disabled={isSubmitting}>Transfer</button>
+                </Col>
+              </Row>
+            </form>
+            <CustomDialog ref={this.refModal} show={this.state.showModal} message="Amount transferred succesfully" title="Information" onHide={this.handleModalClose.bind(this)} />
+          </div>
+        </Container>
       );
     } else {
       return <div>Loading....</div>

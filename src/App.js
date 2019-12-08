@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 
-import Container from "react-bootstrap/Container";
 
 import Home from "./components/Home";
 import Header from "./components/Header";
@@ -33,18 +32,16 @@ class App extends Component {
       return (
         <div className="App w-100">
           <Header />
-          <Container fluid className="app-container">
-            <Router>
-              <Suspense fallback={<div>Loading...</div>}>
-                <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route path="/summary" render={(props) => <MyAccount accountService={instance} />} />
-                  <Route path="/transfer" render={(props) => <FundTransfer accountService={instance} />} />
-                  <Route render={() => <Redirect to={{ pathname: "/" }} />} />
-                </Switch>
-              </Suspense>
-            </Router>
-          </Container>
+          <Router>
+            <Suspense fallback={<div>Loading...</div>}>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route path="/summary" render={(props) => <MyAccount accountService={instance} />} />
+                <Route path="/transfer" render={(props) => <FundTransfer accountService={instance} />} />
+                <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+              </Switch>
+            </Suspense>
+          </Router>
           <Footer />
         </div>
       )

@@ -7,14 +7,14 @@ class Footer extends Component {
     super(props);
 
     this.state = {
-      appName: "Blockone Bank"
+      appName: "block.one"
     };
   };
 
   render() {
     return (
       <div fixed="bottom" className="footer w-100" >
-        <p className="text-right pr-4">Copyright 2019, {this.state.appName}</p>
+        <p className="text-center">Copyright 2019, {this.state.appName}</p>
       </div>
     );
   }

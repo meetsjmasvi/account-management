@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
-import Config from '../config/client';
 
 // Bootstrap Dependencies
-import Jumbotron from "react-bootstrap/Jumbotron";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
+import { Jumbotron, Form, Col, Container } from "react-bootstrap";
 
 // Custom Components
 import AccountSummary from "./AccountSummary";
-import HistoryTable from "./HistoryTable"
+import TransactionHistory from "./TransactionHistory"
 
 class MyAccount extends Component {
 
@@ -53,25 +50,27 @@ class MyAccount extends Component {
 
   render() {
     return (
-      <div className="my-account">
-        <h1 className="text-left">Transaction History</h1>
-        <Jumbotron>
-          <Form>
-            <Form.Row>
-              <Form.Group className="text-left" as={Col} sm={4} md={3} controlId="formGridState">
-                <Form.Label>Account No.</Form.Label>
-                <Form.Control as="select" onChange={this.onAccountChange}>
-                  {this.getAccountNumber()}
-                </Form.Control>
-              </Form.Group>
-            </Form.Row>
-          </Form>
-        </Jumbotron>
-        <AccountSummary accountId={this.state.selectedAccountID} accountService={this.props.accountService} />
-        <div className="trans-history">
-          <HistoryTable accountId={this.state.selectedAccountID} accountService={this.props.accountService} />
+      <Container fluid className="app-container">
+        <div className="my-account">
+          <h1 className="text-left">Transaction History</h1>
+          <Jumbotron>
+            <Form>
+              <Form.Row>
+                <Form.Group className="text-left" as={Col} sm={4} md={3} controlId="formGridState">
+                  <Form.Label>Account No.</Form.Label>
+                  <Form.Control as="select" onChange={this.onAccountChange}>
+                    {this.getAccountNumber()}
+                  </Form.Control>
+                </Form.Group>
+              </Form.Row>
+            </Form>
+          </Jumbotron>
+          <AccountSummary accountId={this.state.selectedAccountID} accountService={this.props.accountService} />
+          <div className="trans-history">
+            <TransactionHistory accountId={this.state.selectedAccountID} accountService={this.props.accountService} />
+          </div>
         </div>
-      </div>
+      </Container>
     );
   }
 
