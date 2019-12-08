@@ -11,7 +11,7 @@
     {
       "id": 2,
       "accno": "362-5563-7",
-      "balance": 49600,
+      "balance": 50000,
       "currency": "SGD",
       "bank": "HSBC",
       "actype": "Multiplie Account"
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "accno": "362-5564-7",
-      "balance": 50700,
+      "balance": 50000,
       "currency": "SGD",
       "bank": "POSB",
       "actype": "Everyday Saving Account"
@@ -27,232 +27,11 @@
     {
       "id": 4,
       "accno": "362-5565-7",
-      "balance": 49700,
+      "balance": 50000,
       "currency": "SGD",
       "bank": "OCBC",
       "actype": "Multiplie Account"
     }
   ],
-  "transactions": [
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5563-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "First transfer to other account",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:54:35",
-      "id": 1
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5563-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "First transfer to other account",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:54:35",
-      "id": 2
-    },
-    {
-      "accno": "362-5563-7",
-      "accref": "362-5562-7",
-      "action": "debit",
-      "amount": 300,
-      "description": "Second transfer as a whole",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:55:02",
-      "id": 3
-    },
-    {
-      "accno": "362-5563-7",
-      "accref": "362-5562-7",
-      "action": "debit",
-      "amount": 300,
-      "description": "Second transfer as a whole",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:55:02",
-      "id": 4
-    },
-    {
-      "accno": "362-5564-7",
-      "accref": "362-5565-7",
-      "action": "debit",
-      "amount": 400,
-      "description": "Third transfer as a whole",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:55:26",
-      "id": 5
-    },
-    {
-      "accno": "362-5564-7",
-      "accref": "362-5565-7",
-      "action": "debit",
-      "amount": 400,
-      "description": "Third transfer as a whole",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:55:26",
-      "id": 6
-    },
-    {
-      "accno": "362-5565-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 600,
-      "description": "Fouth transfer as a whole",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:55:51",
-      "id": 7
-    },
-    {
-      "accno": "362-5565-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 600,
-      "description": "Fouth transfer as a whole",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:55:51",
-      "id": 8
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "ewrew rew ",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:22",
-      "id": 9
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "ewrew rew ",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:22",
-      "id": 10
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "dsfs df",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:33",
-      "id": 11
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "dsfs df",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:33",
-      "id": 12
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5565-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "sdfs dfsd fd",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:42",
-      "id": 13
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5565-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "sdfs dfsd fd",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:42",
-      "id": 14
-    },
-    {
-      "accno": "362-5563-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "dsf sdf ",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:54",
-      "id": 15
-    },
-    {
-      "accno": "362-5563-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "dsf sdf ",
-      "currency": "SGD",
-      "timestamp": "2019-12-08 23:59:54",
-      "id": 16
-    },
-    {
-      "accno": "362-5564-7",
-      "accref": "362-5563-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "fgg dfg d",
-      "currency": "SGD",
-      "timestamp": "2019-12-09 00:00:05",
-      "id": 17
-    },
-    {
-      "accno": "362-5564-7",
-      "accref": "362-5563-7",
-      "action": "debit",
-      "amount": 100,
-      "description": "fgg dfg d",
-      "currency": "SGD",
-      "timestamp": "2019-12-09 00:00:05",
-      "id": 18
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 200,
-      "description": "sdfs dfdfd ",
-      "currency": "SGD",
-      "timestamp": "2019-12-09 00:08:44",
-      "id": 19
-    },
-    {
-      "accno": "362-5562-7",
-      "accref": "362-5564-7",
-      "action": "debit",
-      "amount": 200,
-      "description": "sdfs dfdfd ",
-      "currency": "SGD",
-      "timestamp": "2019-12-09 00:08:44",
-      "id": 20
-    },
-    {
-      "accno": "362-5563-7",
-      "accref": "362-5565-7",
-      "action": "debit",
-      "amount": 200,
-      "description": "sdfds fds f",
-      "currency": "SGD",
-      "timestamp": "2019-12-09 00:11:03",
-      "id": 21
-    },
-    {
-      "accno": "362-5563-7",
-      "accref": "362-5565-7",
-      "action": "debit",
-      "amount": 200,
-      "description": "sdfds fds f",
-      "currency": "SGD",
-      "timestamp": "2019-12-09 00:11:03",
-      "id": 22
-    }
-  ]
+  "transactions": []
 }
