@@ -66,3 +66,19 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+How to use the application:
+-------------------------------------
+Step1: Once after downloading the application
+ - npm install 
+ - npm start
+
+Step 2: Once server started, application opens in browser with localhost:3000
+
+Step 3: Navigate to other pages through menu options.
+        - initial transaction summary will be empty
+
+Step 4: Navigate to transfer fund page and perform few transactions
+        - now transaction summary page will records to display
+
